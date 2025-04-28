@@ -1,0 +1,56 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+
+# Build
+target/
+build/
+out/
+dist/
+
+# Logs
+*.log
+logs/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Maven
+dependency-reduced-pom.xml
+pom.xml.versionsBackup
+
+# Gradle
+.gradle/
+build/
+
+# Others
+*.swp
+*.bak
+*.tmp
+*.orig
+
+# Local configuration files
+*.properties
+*.yml
+*.yaml
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
