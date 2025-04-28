@@ -5,6 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Entity class representing a user in the system
+ * 
+ * @author Daniel
+ * @since 2025-04-28
+ */
 @Entity
 @Table(name = "users")
 @Data
