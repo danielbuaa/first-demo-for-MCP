@@ -7,6 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * @author Daniel
+ * @since 2025-04-28
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
