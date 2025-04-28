@@ -2,7 +2,7 @@
 
 ## 项目概述
 
-这个仓库是专门为了在Claude AI上测试GitHub Multi-modal Content Processing (MCP)的功能而创建的。仓库中的内容可能会看起来有些杂乱，因为它包含了各种不同类型的文件、脚本和代码示例，这些都是为了测试Claude与GitHub集成的各种功能。
+这个仓库是专门为了在Claude AI上测试GitHub Model Context Protocol (MCP)的功能而创建的。仓库中的内容可能会看起来有些杂乱，因为它包含了各种不同类型的文件、脚本和代码示例，这些都是为了测试Claude与GitHub集成的各种功能。
 
 ## 仓库内容
 
