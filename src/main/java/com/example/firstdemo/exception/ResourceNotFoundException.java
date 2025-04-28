@@ -3,6 +3,12 @@ package com.example.firstdemo.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * Exception thrown when a requested resource is not found
+ * 
+ * @author Daniel
+ * @since 2025-04-28
+ */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class ResourceNotFoundException extends RuntimeException {
     
