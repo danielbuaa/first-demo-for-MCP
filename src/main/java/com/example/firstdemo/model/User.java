@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
  * @since 2025-04-28
  */
 @Entity
-@Table(name = "users")
+@Table(name = "t_user")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -1,9 +1,14 @@
 spring:
   profiles:
     active: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/mcp_test
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 server:
-  port: 8080
+  port: 8082
   servlet:
     context-path: /api
 
