@@ -1,0 +1,52 @@
+# 生产环境配置
+spring:
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://db-server:3306/demo?useSSL=true&serverTimezone=Asia/Shanghai&characterEncoding=utf-8
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 10
+      idle-timeout: 600000
+      connection-timeout: 30000
+      max-lifetime: 1800000
+  
+  # JPA配置
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+
+  # Redis配置
+  data:
+    redis:
+      host: redis-server
+      port: 6379
+      password: ${REDIS_PASSWORD}
+      database: 0
+      timeout: 10000
+      lettuce:
+        pool:
+          max-active: 16
+          max-wait: -1
+          max-idle: 16
+          min-idle: 4
+
+# 日志配置
+logging:
+  level:
+    root: warn
+    com.example: info
+  file:
+    name: /var/log/app/app-prod.log
+
+# ZooKeeper配置
+zookeeper:
+  address: zk-server1:2181,zk-server2:2181,zk-server3:2181
+  timeout: 6000
+  retryCount: 5
+  retryInterval: 2000
+  namespace: first-demo-prod

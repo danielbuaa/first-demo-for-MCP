@@ -1,0 +1,52 @@
+# 测试环境配置
+spring:
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://test-db:3306/demo_test?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf-8
+    username: test
+    password: test123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 600000
+      connection-timeout: 30000
+      max-lifetime: 1800000
+  
+  # JPA配置
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  # Redis配置
+  data:
+    redis:
+      host: test-redis
+      port: 6379
+      password: test123
+      database: 1
+      timeout: 10000
+      lettuce:
+        pool:
+          max-active: 8
+          max-wait: -1
+          max-idle: 8
+          min-idle: 0
+
+# 日志配置
+logging:
+  level:
+    root: info
+    com.example: debug
+  file:
+    name: logs/app-test.log
+
+# ZooKeeper配置
+zookeeper:
+  address: test-zk:2181
+  timeout: 4000
+  retryCount: 3
+  retryInterval: 1000
+  namespace: first-demo-test

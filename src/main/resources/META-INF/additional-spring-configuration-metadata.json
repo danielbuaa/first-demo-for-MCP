@@ -1,0 +1,39 @@
+{
+  "properties": [
+    {
+      "name": "myapp.name",
+      "type": "java.lang.String",
+      "description": "Application name."
+    },
+    {
+      "name": "myapp.version",
+      "type": "java.lang.String",
+      "description": "Application version."
+    },
+    {
+      "name": "zookeeper.address",
+      "type": "java.lang.String",
+      "description": "ZooKeeper server addresses."
+    },
+    {
+      "name": "zookeeper.timeout",
+      "type": "java.lang.Integer",
+      "description": "ZooKeeper connection timeout in milliseconds."
+    },
+    {
+      "name": "zookeeper.retryCount",
+      "type": "java.lang.Integer",
+      "description": "Number of retry attempts for ZooKeeper operations."
+    },
+    {
+      "name": "zookeeper.retryInterval",
+      "type": "java.lang.Integer",
+      "description": "Interval between retry attempts in milliseconds."
+    },
+    {
+      "name": "zookeeper.namespace",
+      "type": "java.lang.String",
+      "description": "Namespace for ZooKeeper nodes."
+    }
+  ]
+}
