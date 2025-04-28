@@ -11,6 +11,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Implementation of the UserService interface that provides CRUD operations for User entities.
+ * 
+ * @author Daniel
+ * @since 2025-04-28
+ */
 @Service
 public class UserServiceImpl implements UserService {
 
