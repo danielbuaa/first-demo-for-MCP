@@ -4,6 +4,12 @@ import com.example.firstdemo.dto.UserDto;
 
 import java.util.List;
 
+/**
+ * Service interface for managing users
+ * 
+ * @author Daniel
+ * @since 2025-04-28
+ */
 public interface UserService {
     
     UserDto createUser(UserDto userDto);
