@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author Daniel
+ * @since 2025-04-28
+ */
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
