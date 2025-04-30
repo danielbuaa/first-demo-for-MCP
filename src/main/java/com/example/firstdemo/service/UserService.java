@@ -2,6 +2,8 @@ package com.example.firstdemo.service;
 
 import com.example.firstdemo.dto.UserDto;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 /**
@@ -17,6 +19,8 @@ public interface UserService {
     UserDto getUserById(Long id);
     
     List<UserDto> getAllUsers();
+    
+    Page<UserDto> getAllUsers(Pageable pageable);
     
     UserDto updateUser(Long id, UserDto userDto);
     

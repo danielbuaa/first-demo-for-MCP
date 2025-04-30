@@ -11,6 +11,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+
 /**
  * Implementation of the UserService interface that provides CRUD operations for User entities.
  * 
@@ -50,6 +54,15 @@ public class UserServiceImpl implements UserService {
         return users.stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
+    }
+    
+    @Override
+    public Page<UserDto> getAllUsers(Pageable pageable) {
+        Page<User> userPage = userRepository.findAll(pageable);
+        List<UserDto> userDtos = userPage.getContent().stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+        return new PageImpl<>(userDtos, pageable, userPage.getTotalElements());
     }
 
     @Override

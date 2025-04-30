@@ -15,6 +15,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 /**
@@ -45,11 +48,19 @@ public class UserController {
         return new ResponseEntity<>(userService.createUser(userDto), HttpStatus.CREATED);
     }
 
-    @Operation(summary = "获取所有用户", description = "返回系统中的所有用户列表")
-    @ApiResponse(responseCode = "200", description = "成功获取用户列表")
+    @Operation(summary = "获取用户列表", description = "分页返回系统中的用户列表")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "成功获取用户列表"),
+        @ApiResponse(responseCode = "400", description = "无效的分页参数")
+    })
     @GetMapping
-    public ResponseEntity<List<UserDto>> getAllUsers() {
-        List<UserDto> users = userService.getAllUsers();
+    public ResponseEntity<Page<UserDto>> getAllUsers(
+            @Parameter(description = "页码（从0开始）", required = false) 
+            @RequestParam(defaultValue = "0") int page,
+            @Parameter(description = "每页大小", required = false) 
+            @RequestParam(defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<UserDto> users = userService.getAllUsers(pageable);
         return ResponseEntity.ok(users);
     }
 
