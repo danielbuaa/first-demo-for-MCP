@@ -5,7 +5,6 @@ import com.example.firstdemo.dto.UserDto;
 import com.example.firstdemo.exception.ResourceNotFoundException;
 import com.example.firstdemo.model.User;
 import com.example.firstdemo.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,18 +25,17 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-    @Autowired
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
     public UserDto createUser(UserDto userDto) {
-        // 转换DTO为实体对象
+        // Convert DTO to entity
         User user = mapToEntity(userDto);
-        // 保存用户
+        // Save user
         User savedUser = userRepository.save(user);
-        // 转换实体为DTO并返回
+        // Convert entity to DTO and return
         return mapToDTO(savedUser);
     }
 
@@ -67,29 +65,30 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto updateUser(Long id, UserDto userDto) {
-        // 检查用户是否存在
+        // Check if user exists
         User existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
         
-        // 更新用户信息
+        // Update user information
         existingUser.setUsername(userDto.getUsername());
         existingUser.setEmail(userDto.getEmail());
         existingUser.setPhone(userDto.getPhone());
         existingUser.setActive(userDto.isActive());
         
-        // 保存更新后的用户
+        // Save updated user
         User updatedUser = userRepository.save(existingUser);
         return mapToDTO(updatedUser);
     }
 
     @Override
     public void deleteUser(Long id) {
-        // 检查用户是否存在
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
+        // Check if user exists
+        if (!userRepository.existsById(id)) {
+            throw new ResourceNotFoundException("User", "id", id);
+        }
         
-        // 删除用户
-        userRepository.delete(user);
+        // Delete user
+        userRepository.deleteById(id);
     }
 
     @Override
@@ -97,7 +96,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.existsById(id);
     }
 
-    // 实体转DTO
+    // Convert entity to DTO
     private UserDto mapToDTO(User user) {
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());
@@ -108,7 +107,7 @@ public class UserServiceImpl implements UserService {
         return userDto;
     }
 
-    // DTO转实体
+    // Convert DTO to entity
     private User mapToEntity(UserDto userDto) {
         User user = new User();
         user.setId(userDto.getId());
